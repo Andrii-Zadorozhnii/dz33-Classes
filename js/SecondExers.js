@@ -42,6 +42,8 @@ class Marker {
             console.log("You have inaf ink for print: ", this.world, "by", this.color, "color");
         } else {
             console.log("You don't have inaf ink for write: ", this.world);
+            console.log("You should to reharge your pen");
+            // console.log(`You can write only (${} )letters, but you wanna right ${totalLetters}}`)
         }
     }
 }
@@ -64,7 +66,7 @@ const standartMarker = new Marker(world, color, inkPersent);
 const rechargableMarker = new RechargableMarker(world, color, inkPersent);
 
 if (markerQuestion) {
-    RechargableMarker.writeText(world);
+    rechargableMarker.writeText(world);
 } else {
     standartMarker.writeText(world);
 }
