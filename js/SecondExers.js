@@ -48,22 +48,25 @@ class Marker {
     }
 }
 
-class RechargableMarker extends Marker {
-    constructor(world) {
-        super(world);
+class RefillableMarker extends Marker {
+    constructor(world, color, inkPersent, refillAmount) {
+        super(world, color, inkPersent);
+        this.refillAmount = refillAmount;
     }
 
     refill() {
-        this.inkPercent = 99999999999999999999;
+        this.inkPersent += this.refillAmount;
+        console.log(`Refilled marker with ${this.refillAmount}% ink. Current ink level: ${this.inkPersent}%.`);
     }
 }
+
 const markerQuestion = confirm("Do you have a rechargable marker?");
 const world = prompt("Write a world: ");
 const color = prompt("write a marker color");
 const inkPersent = prompt("Write ink persent");
 
 const standartMarker = new Marker(world, color, inkPersent);
-const rechargableMarker = new RechargableMarker(world, color, inkPersent);
+const rechargableMarker = new RefillableMarker(world, color, inkPersent);
 
 if (markerQuestion) {
     rechargableMarker.writeText(world);
